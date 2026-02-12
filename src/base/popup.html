@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Options</title>
+  <style>
+    .m-moco-project-remove svg {
+      width: 16px;
+    }
+
+    .m-moco-project-remove {
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .m-ticket-prefix-options {
+      border-spacing: 0;
+      width: 400px;
+    }
+
+    .m-ticket-prefix-options__wrapper {
+      max-height: 400px;
+      overflow: auto;
+    }
+
+    .m-ticket-prefix-options input {
+      height: 30px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .m-ticket-prefix-options td {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    button {
+      cursor: pointer;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #48b3bd;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .m-ticket-prefix-options__add-button {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .m-options__footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #status {
+      font-weight: bold;
+      color: green;
+    }
+
+    #save {
+      background-color: green;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    #cancel {
+      background-color: red;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form id="options">
+
+    <h2>Allowed Ticket-prefixes for Moco projects</h2>
+    <div class="m-ticket-prefix-options__wrapper">
+      <table class="m-ticket-prefix-options">
+        <thead>
+          <tr>
+            <th>Moco Project</th>
+            <th>Ticket Prefixes<br>(comma separated)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button type="button" class="m-ticket-prefix-options__add-button">Add new Moco project</button>
+    <div class="m-options__footer">
+      <button type="button" id="cancel">Cancel</button>
+      <div id="status"></div>
+      <button type="submit" id="save">Save</button>
+    </div>
+  </form>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
