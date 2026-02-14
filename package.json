@@ -4,26 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "nodemon --watch src --ext ts,js,json --exec \"pnpm build\""
+    "build": "npm run build:firefox && npm run build:chrome",
+    "build:firefox": "rollup -c --environment TARGET:firefox",
+    "build:chrome": "rollup -c --environment TARGET:chrome",
+    "dev": "nodemon --watch src --ext css,ts,js,json --exec \"npm run build\"",
+    "package:firefox": "cd dist/firefox && zip -r ../firefox.zip .",
+    "package:chrome": "cd dist/chrome && zip -r ../chrome.zip .",
+    "type-check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.24.0",
   "dependencies": {
-    "vite": "^7.3.1"
+    "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/chrome": "^0.1.36",
     "@types/firefox-webext-browser": "^143.0.0",
     "@types/node": "^25.2.2",
+    "@types/webextension-polyfill": "^0.10.7",
     "nodemon": "^3.1.11",
     "path": "^0.12.7",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-iife": "^0.7.1",
     "tslib": "^2.8.1",
-    "vite-plugin-static-copy": "^3.2.0"
+    "tsx": "^4.21.0"
   }
 }

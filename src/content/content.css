@@ -1,0 +1,119 @@
+tr[data-ticket-check="success"] {
+  --_row-accent: #7dc332;
+}
+tr[data-ticket-check="error"] {
+  --_row-accent: #f04444;
+}
+tr[data-ticket-check="unknown"] {
+  --_row-accent: #ffd500;
+}
+
+.table tbody tr[data-ticket-check] {
+  --_row-background: color-mix(in srgb, var(--_row-accent) 15%, white 85%);
+  margin-bottom: 4px;
+  display: table-row;
+}
+
+.table tbody tr[data-ticket-check] > td {
+  position: relative;
+  background-color: var(--_row-background);
+}
+.table tbody tr[data-ticket-check]:hover > td {
+  background-color: color-mix(in srgb, var(--_row-background) 99%, black 1%);
+}
+.table tbody tr[data-ticket-check] > td:first-child::before {
+  border-left: 8px solid var(--_row-accent);
+  content: "";
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.table tbody tr[data-ticket-check] > td {
+  border-bottom: 2px solid white;
+  border-bottom-color: white !important;
+}
+
+.table tbody tr[data-ticket-check] > td:first-child {
+  padding-left: 20px;
+}
+
+.m-allow-question__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+  margin-top: 16px;
+  background: var(--moco-ticket-checker--error-primary);
+  color: white;
+}
+
+.m-allow-question__wrapper p {
+  padding: 16px 16px;
+  margin: 0;
+}
+
+.m-allow-question__wrapper button {
+  margin-right: 16px;
+}
+
+.m-allow-button {
+  font-family:
+    Roboto,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: bold;
+  background: white;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: inline-flex;
+  font-size: 14px;
+  color: black;
+  padding: 4px 12px;
+  border: 0;
+}
+
+/* START STOP BUTTON STYLING */
+.timer {
+  font-family:
+    Roboto,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: bold;
+  background: white;
+  letter-spacing: 1px;
+  border: 2px solid currentColor;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: inline-flex;
+  font-size: 14px;
+}
+.fa-grey.timer {
+  color: #434343;
+}
+.fa-grey.timer::before {
+  content: "Start";
+}
+.fa-red.timer::before {
+  content: "Stop";
+}
+.fa-grey.timer::after {
+  content: "▲";
+  transform: rotate(90deg);
+  margin-left: 4px;
+}
+.fa-red.timer::after {
+  content: "▇";
+  margin-left: 4px;
+  transform: rotate(90deg);
+  font-size: 0.9em;
+}

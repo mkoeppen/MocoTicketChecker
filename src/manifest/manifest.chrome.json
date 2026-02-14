@@ -24,7 +24,7 @@
   "content_scripts": [
     {
       "js": [
-        "inject.js"
+        "content.js"
       ],
       "matches": [
         "*://*.mocoapp.com/activities*"

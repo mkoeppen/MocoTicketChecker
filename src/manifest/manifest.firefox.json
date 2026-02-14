@@ -25,7 +25,10 @@
         "*://*.mocoapp.com/*"
       ],
       "js": [
-        "inject.js"
+        "content.js"
+      ],
+      "css": [
+        "content.css"
       ]
     }
   ],

@@ -1,14 +1,16 @@
 import copy from "rollup-plugin-copy";
 import typescript from "@rollup/plugin-typescript";
 
+const target = process.env.TARGET || "chrome";
+const uppercaseTarget = target.charAt(0).toUpperCase() + target.slice(1);
+
 export default [
-  // Chrome Inject
   {
-    input: "src/chrome/inject.ts",
+    input: `src/content/content.ts`,
     output: {
-      file: "dist/chrome/inject.js",
+      file: `dist/${target}/content.js`,
       format: "iife",
-      name: "ChromeInject",
+      name: `${uppercaseTarget}Content`,
       sourcemap: true,
     },
     plugins: [
@@ -17,37 +19,28 @@ export default [
       }),
       copy({
         targets: [
-          { src: "src/base/*", dest: "dist/chrome" },
-          { src: "src/chrome/**/!(*.ts)", dest: "dist/chrome" },
+          {
+            src: `src/manifest/manifest.${target}.json`,
+            dest: `dist/${target}`,
+            rename: "manifest.json",
+          },
+          {
+            src: `src/content/content.css`,
+            dest: `dist/${target}`,
+          },
+          { src: "src/assets/*", dest: `dist/${target}` },
         ],
         flatten: true,
         verbose: true,
       }),
     ],
   },
-  // Chrome Popup
   {
-    input: "src/chrome/popup.ts",
+    input: `src/popup/popup.ts`,
     output: {
-      file: "dist/chrome/popup.js",
+      file: `dist/${target}/popup.js`,
       format: "iife",
-      name: "ChromePopup",
-      sourcemap: true,
-    },
-    plugins: [
-      typescript({
-        declaration: false,
-      }),
-      // Assets only beim ersten Build kopieren, daher hier leer
-    ],
-  },
-  // Firefox Inject
-  {
-    input: "src/firefox/inject.ts",
-    output: {
-      file: "dist/firefox/inject.js",
-      format: "iife",
-      name: "FirefoxInject",
+      name: `${uppercaseTarget}Popup`,
       sourcemap: true,
     },
     plugins: [
@@ -55,29 +48,10 @@ export default [
         declaration: false,
       }),
       copy({
-        targets: [
-          { src: "src/base/*", dest: "dist/firefox" },
-          { src: "src/firefox/**/!(*.ts)", dest: "dist/firefox" },
-        ],
+        targets: [{ src: "src/popup/popup.html", dest: `dist/${target}` }],
         flatten: true,
         verbose: true,
       }),
-    ],
-  },
-  // Firefox Popup
-  {
-    input: "src/firefox/popup.ts",
-    output: {
-      file: "dist/firefox/popup.js",
-      format: "iife",
-      name: "FirefoxPopup",
-      sourcemap: true,
-    },
-    plugins: [
-      typescript({
-        declaration: false,
-      }),
-      // Assets only beim ersten Build kopieren, daher hier leer
     ],
   },
 ];

@@ -1,17 +1,13 @@
-// (function () {
+import { StorageHandler } from "~/utils/storage";
 
-import { StorageHandler } from "./inject";
-
-export abstract class PopupHandler {
-  storageHandler: StorageHandler;
+class PopupHandler {
   ticketPrefixTable: HTMLTableSectionElement;
 
-  constructor(storageHandler: StorageHandler) {
-    this.storageHandler = storageHandler;
-
+  constructor() {
     const ticketPrefixTable = document.querySelector<HTMLTableSectionElement>(
       ".m-ticket-prefix-options tbody",
     );
+    console.log("[debug] open popup");
 
     if (!ticketPrefixTable) {
       throw new Error("Could not find ticketPrefixTable element");
@@ -46,7 +42,7 @@ export abstract class PopupHandler {
         .map((p) => p.trim());
     });
 
-    this.storageHandler.setProjects(projects).then(() => {
+    StorageHandler.saveProjects(projects).then(() => {
       // Update status to let user know options were saved.
       const status = document.getElementById("status");
       if (status) {
@@ -60,7 +56,6 @@ export abstract class PopupHandler {
 
   async init() {
     console.log("Initializing popup");
-    await this.storageHandler.init();
     this.initEvents();
     this.restoreOptions();
   }
@@ -93,9 +88,9 @@ export abstract class PopupHandler {
     });
   }
 
-  restoreOptions() {
+  async restoreOptions() {
     this.ticketPrefixTable.innerHTML = "";
-    const projects = this.storageHandler.getProjects();
+    const projects = await StorageHandler.loadProjects();
     Object.entries(projects).forEach(
       ([mocoProjectName, allowedTicketPrefixes]) => {
         const row = document.createElement("tr");
@@ -124,3 +119,5 @@ export abstract class PopupHandler {
             </button></td>`;
   }
 }
+
+new PopupHandler();
