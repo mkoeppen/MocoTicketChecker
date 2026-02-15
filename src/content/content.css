@@ -17,7 +17,7 @@ tr[data-ticket-check="unknown"] {
 
 .table tbody tr[data-ticket-check] {
   --_row-background: color-mix(in srgb, var(--_row-accent) 15%, white 85%);
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   display: table-row;
 }
 
@@ -29,7 +29,7 @@ tr[data-ticket-check="unknown"] {
   background-color: color-mix(in srgb, var(--_row-background) 99%, black 1%);
 }
 .table tbody tr[data-ticket-check] > td:first-child::before {
-  border-left: 8px solid var(--_row-accent);
+  border-left: 0.5rem solid var(--_row-accent);
   content: "";
   display: inline-block;
   height: 100%;
@@ -39,32 +39,32 @@ tr[data-ticket-check="unknown"] {
 }
 
 .table tbody tr[data-ticket-check] > td {
-  border-bottom: 2px solid white;
+  border-bottom: 0.125rem solid white;
   border-bottom-color: white !important;
 }
 
 .table tbody tr[data-ticket-check] > td:first-child {
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .mtc-allow-question__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  border-radius: 4px;
-  margin-top: 16px;
+  gap: 1.25rem;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
   background: var(--_row-accent);
   color: white;
 }
 
 .mtc-allow-question__wrapper p {
-  padding: 16px 16px;
+  padding: 1rem 1rem;
   margin: 0;
 }
 
 .mtc-allow-question__wrapper button {
-  margin-right: 16px;
+  margin-right: 1rem;
 }
 
 .mtc-allow-button {
@@ -76,13 +76,13 @@ tr[data-ticket-check="unknown"] {
     sans-serif;
   font-weight: bold;
   background: white;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  margin-top: 4px;
+  letter-spacing: 0.0625rem;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: black;
-  padding: 4px 12px;
+  padding: 0.25rem 0.75rem;
   border: 0;
 }
 
@@ -96,13 +96,13 @@ tr[data-ticket-check="unknown"] {
     sans-serif;
   font-weight: bold;
   background: white;
-  letter-spacing: 1px;
-  border: 2px solid currentColor;
-  padding: 6px 12px;
-  border-radius: 4px;
-  margin-top: 4px;
+  letter-spacing: 0.0625rem;
+  border: 0.125rem solid currentColor;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .fa-grey.timer {
   color: #434343;
@@ -116,11 +116,11 @@ tr[data-ticket-check="unknown"] {
 .fa-grey.timer::after {
   content: "▲";
   transform: rotate(90deg);
-  margin-left: 4px;
+  margin-left: 0.25rem;
 }
 .fa-red.timer::after {
   content: "▇";
-  margin-left: 4px;
+  margin-left: 0.25rem;
   transform: rotate(90deg);
   font-size: 0.9em;
 }

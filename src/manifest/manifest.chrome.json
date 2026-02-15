@@ -1,34 +1,42 @@
 {
-  "name": "Moco Ticket Checker",
-  "description": "Checks if Ticket Ticket Number matched with Moco Project",
-  "version": "1.0",
   "manifest_version": 3,
+  "name": "Moco Ticket Checker",
+  "version": "1.0",
+  "description": "Checks if ticket number matched with Moco project",
   "permissions": [
     "storage"
   ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "/images/get_started16.png",
-      "32": "/images/get_started32.png",
-      "48": "/images/get_started48.png",
-      "128": "/images/get_started128.png"
-    }
-  },
   "icons": {
-    "16": "/images/get_started16.png",
-    "32": "/images/get_started32.png",
-    "48": "/images/get_started48.png",
-    "128": "/images/get_started128.png"
+    "16": "/images/logo16.jpg",
+    "32": "/images/logo32.jpg",
+    "48": "/images/logo48.jpg",
+    "128": "/images/logo128.jpg"
   },
+  "host_permissions": [
+    "*://*.mocoapp.com/*"
+  ],
   "content_scripts": [
     {
-      "js": [
-        "content.js"
-      ],
       "matches": [
         "*://*.mocoapp.com/activities*"
+      ],
+      "js": [
+        "browser-polyfill.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
       ]
     }
-  ]
+  ],
+  "action": {
+    "default_title": "Moco Ticket Checker",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/logo16.jpg",
+      "32": "/images/logo32.jpg",
+      "48": "/images/logo48.jpg",
+      "128": "/images/logo128.jpg"
+    }
+  }
 }

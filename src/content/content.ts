@@ -48,7 +48,10 @@ class MocoItem {
         ".project-name, .tst-project-name",
       )?.nextSibling?.nextSibling as HTMLElement
     )?.innerText;
+
+    if (!itemLabel) return "unknown";
     const match = itemLabel.match(/P[0-9]+/);
+
     return match && match.length > 0 ? match[0] : itemLabel;
   }
   async hasAcceptedPrefix() {
@@ -80,23 +83,24 @@ class MocoItem {
 
     entryDetailsElement.append(wrapper);
 
-    wrapper.querySelector("button")!.addEventListener("click", async () => {
-      debugger;
-      if (!this.projectName || !this.prefix) return;
+    wrapper
+      .querySelector(".mtc-allow-button")!
+      .addEventListener("click", async () => {
+        if (!this.projectName || !this.prefix) return;
 
-      await StorageHandler.acceptTicketPrefixForProject(
-        this.prefix,
-        this.projectName,
-      );
+        await StorageHandler.acceptTicketPrefixForProject(
+          this.prefix,
+          this.projectName,
+        );
 
-      const items = document.querySelectorAll<THtmlElementWithMocoItem>(
-        ".tst-activities tbody tr",
-      );
-      items.forEach((item) => {
-        item.querySelector(".mtc-allow-question__wrapper")?.remove();
-        item.mocoItem?.check();
+        const items = document.querySelectorAll<THtmlElementWithMocoItem>(
+          ".tst-activities tbody tr",
+        );
+        items.forEach(async (item) => {
+          await item.mocoItem?.check();
+          item.querySelector(".mtc-allow-question__wrapper")?.remove();
+        });
       });
-    });
   }
 }
 
@@ -121,8 +125,6 @@ class InjectHandler {
     });
   }
 
-  handlePaste() {}
-
   initInjectHandler() {
     if (!document.querySelector(".tst-activities tbody tr")) {
       console.log("Moco Ticket Checker - Wait for Moco");
@@ -144,8 +146,6 @@ class InjectHandler {
     };
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
-
-    this.handlePaste();
   }
 }
 

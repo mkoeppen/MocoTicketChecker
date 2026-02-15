@@ -16,7 +16,6 @@ export default [
         "webextension-polyfill": "browser",
       },
     },
-    external: ["webextension-polyfill"],
     plugins: [
       typescript({
         declaration: false,
@@ -33,6 +32,10 @@ export default [
             dest: `dist/${target}`,
           },
           { src: "src/assets/*", dest: `dist/${target}` },
+          {
+            src: "node_modules/webextension-polyfill/dist/browser-polyfill.js",
+            dest: `dist/${target}`,
+          },
         ],
         flatten: true,
         verbose: true,
@@ -50,7 +53,6 @@ export default [
         "webextension-polyfill": "browser",
       },
     },
-    external: ["webextension-polyfill"],
     plugins: [
       typescript({
         declaration: false,
