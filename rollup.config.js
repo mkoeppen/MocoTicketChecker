@@ -12,7 +12,11 @@ export default [
       format: "iife",
       name: `${uppercaseTarget}Content`,
       sourcemap: true,
+      globals: {
+        "webextension-polyfill": "browser",
+      },
     },
+    external: ["webextension-polyfill"],
     plugins: [
       typescript({
         declaration: false,
@@ -42,13 +46,20 @@ export default [
       format: "iife",
       name: `${uppercaseTarget}Popup`,
       sourcemap: true,
+      globals: {
+        "webextension-polyfill": "browser",
+      },
     },
+    external: ["webextension-polyfill"],
     plugins: [
       typescript({
         declaration: false,
       }),
       copy({
-        targets: [{ src: "src/popup/popup.html", dest: `dist/${target}` }],
+        targets: [
+          { src: "src/popup/popup.html", dest: `dist/${target}` },
+          { src: "src/popup/popup.css", dest: `dist/${target}` },
+        ],
         flatten: true,
         verbose: true,
       }),

@@ -1,11 +1,18 @@
+:root {
+  --color-green: #7dc332;
+  --color-red: #f04444;
+  --color-yellow: #ffd500;
+  --color-blue: #38b5eb;
+}
+
 tr[data-ticket-check="success"] {
-  --_row-accent: #7dc332;
+  --_row-accent: var(--color-green);
 }
 tr[data-ticket-check="error"] {
-  --_row-accent: #f04444;
+  --_row-accent: var(--color-red);
 }
 tr[data-ticket-check="unknown"] {
-  --_row-accent: #ffd500;
+  --_row-accent: var(--color-yellow);
 }
 
 .table tbody tr[data-ticket-check] {
@@ -40,27 +47,27 @@ tr[data-ticket-check="unknown"] {
   padding-left: 20px;
 }
 
-.m-allow-question__wrapper {
+.mtc-allow-question__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   border-radius: 4px;
   margin-top: 16px;
-  background: var(--moco-ticket-checker--error-primary);
+  background: var(--_row-accent);
   color: white;
 }
 
-.m-allow-question__wrapper p {
+.mtc-allow-question__wrapper p {
   padding: 16px 16px;
   margin: 0;
 }
 
-.m-allow-question__wrapper button {
+.mtc-allow-question__wrapper button {
   margin-right: 16px;
 }
 
-.m-allow-button {
+.mtc-allow-button {
   font-family:
     Roboto,
     Helvetica Neue,

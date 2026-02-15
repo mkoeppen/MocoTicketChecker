@@ -1,0 +1,141 @@
+:root {
+  --color-green: #7dc332;
+  --color-red: #f04444;
+  --color-yellow: #ffd500;
+  --color-blue: #38b5eb;
+  --color-dark: #393939;
+}
+
+.mtc-options {
+  font-family:
+    Roboto,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  margin: 16px;
+}
+
+.mtc-options__heading {
+  font-size: 16px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px dashed black;
+  padding-bottom: 8px;
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.mtc-options__table-wrapper {
+  text-align: left;
+  font-size: 14px;
+}
+
+.mtc-options__table-hint {
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.mtc-remove-button svg {
+  width: 16px;
+}
+
+.mtc-button.mtc-remove-button {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.mtc-options__prefix-table {
+  border-spacing: 0;
+  width: 400px;
+}
+
+.mtc-options__prefix-table th {
+  padding-bottom: 4px;
+}
+
+.mtc-options__table-wrapper {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.mtc-options__prefix-table input {
+  height: 30px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.mtc-options__prefix-table td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.mtc-button {
+  --_background: var(--color-dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--_background);
+  color: white;
+  border: none;
+  border-radius: 0;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.mtc-button:hover {
+  background-color: color-mix(in srgb, var(--_background) 99%, white 10%);
+}
+
+.mtc-button#save,
+.mtc-button#cancel {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.mtc-button#save:hover,
+.mtc-button#cancel:hover {
+  background-color: color-mix(in srgb, var(--_background) 99%, black 10%);
+}
+
+.mtc-button#save {
+  --_background: var(--color-green);
+}
+
+.mtc-button#cancel {
+  --_background: var(--color-red);
+}
+
+.mtc-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  min-height: 30px;
+}
+
+.mtc-options__prefix-table__add-button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.mtc-options__footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#status {
+  font-weight: bold;
+  color: var(--color-green);
+}

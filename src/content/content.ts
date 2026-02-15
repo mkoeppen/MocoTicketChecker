@@ -68,19 +68,20 @@ class MocoItem {
     if (!entryDetailsElement || this.prefix === false) return;
 
     const oldWrapper = entryDetailsElement?.querySelector(
-      ".m-allow-question__wrapper",
+      ".mtc-allow-question__wrapper",
     );
     if (oldWrapper) oldWrapper.remove();
 
-    wrapper.classList.add("m-allow-question__wrapper");
+    wrapper.classList.add("mtc-allow-question__wrapper");
     wrapper.innerHTML = `
                 <p>Accept Ticket Prefix <strong>"${this.prefix}"</strong> for Moco Project <strong>"${this.projectName}"</strong></p>
-                <button class="m-allow-button">Accept</button>
+                <button class="mtc-allow-button">Accept</button>
             `;
 
     entryDetailsElement.append(wrapper);
 
     wrapper.querySelector("button")!.addEventListener("click", async () => {
+      debugger;
       if (!this.projectName || !this.prefix) return;
 
       await StorageHandler.acceptTicketPrefixForProject(
@@ -92,7 +93,7 @@ class MocoItem {
         ".tst-activities tbody tr",
       );
       items.forEach((item) => {
-        item.querySelector(".m-allow-question__wrapper")?.remove();
+        item.querySelector(".mtc-allow-question__wrapper")?.remove();
         item.mocoItem?.check();
       });
     });
@@ -113,7 +114,7 @@ class InjectHandler {
       if (
         item.dataset.ticketCheck === "error" &&
         typeof item.mocoItem !== "undefined" &&
-        !item.querySelector(".m-allow-question__wrapper")
+        !item.querySelector(".mtc-allow-question__wrapper")
       ) {
         item.mocoItem.addAllowQuestion();
       }
