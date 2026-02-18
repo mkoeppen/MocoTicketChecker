@@ -76,10 +76,28 @@ class MocoItem {
     if (oldWrapper) oldWrapper.remove();
 
     wrapper.classList.add("mtc-allow-question__wrapper");
-    wrapper.innerHTML = `
-                <p>Accept Ticket Prefix <strong>"${this.prefix}"</strong> for Moco Project <strong>"${this.projectName}"</strong></p>
-                <button class="mtc-allow-button">Accept</button>
-            `;
+
+    const p = document.createElement("p");
+    p.append(
+      document.createTextNode("Accept Ticket Prefix "),
+      (() => {
+        const s = document.createElement("strong");
+        s.textContent = `\"${this.prefix}\"`;
+        return s;
+      })(),
+      document.createTextNode(" for Moco Project "),
+      (() => {
+        const s = document.createElement("strong");
+        s.textContent = `\"${this.projectName}\"`;
+        return s;
+      })(),
+    );
+
+    const button = document.createElement("button");
+    button.className = "mtc-allow-button";
+    button.textContent = "Accept";
+
+    wrapper.append(p, button);
 
     entryDetailsElement.append(wrapper);
 

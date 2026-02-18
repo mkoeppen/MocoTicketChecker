@@ -1,10 +1,24 @@
 ![alt text](moco.jpg "intro")
 
-# Install
+# Step-by-step instructions to build an exact copy of the add-on source code
 
-# Install Chrome Extention in Developermode
+Requirements
 
-1. Open Chrome extention page
-    ```chrome://extensions/```
-2. Activate Developer Mode with Checkbox in the top right corner
-3. Use the "load unpacked" button
+- Operating System: Linux, macOS, or Windows
+- Node.js version: ≥ 24.x.x
+- npm version: ≥ 11.x.x
+
+1. Clone repository
+   `git clone https://github.com/mkoeppen/MocoTicketChecker.git`
+
+2. Install dependancies
+   `npm install`
+
+3. Start dev mode with file watcher
+   `npm run dev`
+
+4. Build folders
+   `npm run build`
+
+5. Build and create zip packages
+   `npm run publish`

@@ -10,11 +10,13 @@
     "dev": "nodemon --watch src --ext css,ts,js,json --exec \"npm run build\"",
     "package:firefox": "cd dist/firefox && zip -r ../firefox.zip .",
     "package:chrome": "cd dist/chrome && zip -r ../chrome.zip .",
-    "type-check": "tsc --noEmit"
+    "source-zip": "zip -r dist/source.zip . -x 'node_modules/*' -x 'dist/*' -x 'dist/source.zip'",
+    "type-check": "tsc --noEmit",
+    "publish": "npm run build && npm run package:firefox && npm run package:chrome && npm run source-zip"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Markus Lohmeier",
+  "license": "MIT",
   "dependencies": {
     "webextension-polyfill": "^0.12.0"
   },
@@ -29,6 +31,11 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-iife": "^0.7.1",
     "tslib": "^2.8.1",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "web-ext": "^9.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkoeppen/MocoTicketChecker.git"
   }
 }

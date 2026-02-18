@@ -17,12 +17,6 @@ class PopupHandler {
     this.init();
   }
 
-  addRow() {
-    const row = document.createElement("tr");
-    row.innerHTML = this.rowTemplate("", []);
-    this.ticketPrefixTable.append(row);
-  }
-
   save() {
     const projects: { [key: string]: string[] } = {};
     this.ticketPrefixTable.querySelectorAll("tr").forEach((row) => {
@@ -64,7 +58,7 @@ class PopupHandler {
     document
       .querySelector(".mtc-options__prefix-table__add-button")
       ?.addEventListener("click", () => {
-        this.addRow();
+        this.addRow(this.ticketPrefixTable, "", []);
       });
 
     document.body.addEventListener("click", (e: MouseEvent) => {
@@ -93,37 +87,54 @@ class PopupHandler {
     const projects = await StorageHandler.loadProjects();
     Object.entries(projects).forEach(
       ([mocoProjectName, allowedTicketPrefixes]) => {
-        const row = document.createElement("tr");
-        row.innerHTML = this.rowTemplate(
+        this.addRow(
+          this.ticketPrefixTable,
           mocoProjectName,
           allowedTicketPrefixes,
         );
-        this.ticketPrefixTable.append(row);
       },
     );
   }
 
-  rowTemplate(
+  addRow(
+    table: HTMLTableSectionElement,
     mocoProjectName: string = "",
     allowedTicketPrefixes: string[] = [],
   ) {
-    console.log(
-      "Generating row template for",
-      mocoProjectName,
-      allowedTicketPrefixes,
-    );
-    return `
-    <td>
-      <input class="mtc-input mtc-input__project-name" name="mocoProjectName" type="text" required value="${mocoProjectName}">
-    </td>
-    <td>
-      <input class="mtc-input mtc-input__allowed-ticket-prefixes" name="allowedTicketPrefixes" type="text" required value="${allowedTicketPrefixes.join(",")}">
-    </td>
-    <td>
-      <button class="mtc-button mtc-remove-button" type="button"  title="Remove">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M512 800V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm256 0V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm256 0V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm128-724v948H256V76q0-22 7-40.5t14.5-27Q285 0 288 0h832q3 0 10.5 8.5t14.5 27q7 18.5 7 40.5zM480 1152h448l-48 117q-7 9-17 11H546q-10-2-17-11zm928-32v-64q0-14-9-23t-23-9h-96V76q0-83-47-143.5T1120-128H288q-66 0-113 58.5T128 72v952H32q-14 0-23 9t-9 23v64q0 14 9 23t23 9h309l70 167q15 37 54 63t79 26h320q40 0 79-26t54-63l70-167h309q14 0 23-9t9-23z" style="fill:currentColor" transform="matrix(1 0 0 -1 197.424 1255.05)"/></svg>
-      </button>
-    </td>`;
+    const row = document.createElement("tr");
+
+    // project name
+    const tdProject = document.createElement("td");
+    const inputProject = document.createElement("input");
+    inputProject.className = "mtc-input mtc-input__project-name";
+    inputProject.name = "mocoProjectName";
+    inputProject.type = "text";
+    inputProject.required = true;
+    inputProject.value = mocoProjectName;
+    tdProject.appendChild(inputProject);
+
+    // ticket prefixes
+    const tdPrefixes = document.createElement("td");
+    const inputPrefixes = document.createElement("input");
+    inputPrefixes.className = "mtc-input mtc-input__allowed-ticket-prefixes";
+    inputPrefixes.name = "allowedTicketPrefixes";
+    inputPrefixes.type = "text";
+    inputPrefixes.required = true;
+    inputPrefixes.value = allowedTicketPrefixes.join(",");
+    tdPrefixes.appendChild(inputPrefixes);
+
+    // remove button
+    const tdRemove = document.createElement("td");
+    const button = document.createElement("button");
+    button.className = "mtc-button mtc-remove-button";
+    button.type = "button";
+    button.title = "Remove";
+    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M512 800V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm256 0V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm256 0V224q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v576q0 14 9 23t23 9h64q14 0 23-9t9-23zm128-724v948H256V76q0-22 7-40.5t14.5-27Q285 0 288 0h832q3 0 10.5 8.5t14.5 27q7 18.5 7 40.5zM480 1152h448l-48 117q-7 9-17 11H546q-10-2-17-11zm928-32v-64q0-14-9-23t-23-9h-96V76q0-83-47-143.5T1120-128H288q-66 0-113 58.5T128 72v952H32q-14 0-23 9t-9 23v64q0 14 9 23t23 9h309l70 167q15 37 54 63t79 26h320q40 0 79-26t54-63l70-167h309q14 0 23-9t9-23z" style="fill:currentColor" transform="matrix(1 0 0 -1 197.424 1255.05)"/></svg>`;
+    tdRemove.appendChild(button);
+
+    // create row
+    row.append(tdProject, tdPrefixes, tdRemove);
+    table.appendChild(row);
   }
 }
 
