@@ -103,6 +103,7 @@ tr[data-ticket-check="unknown"] {
   margin-top: 0.25rem;
   display: inline-flex;
   font-size: 0.875rem;
+  min-width: max-content;
 }
 .fa-grey.timer {
   color: #434343;
