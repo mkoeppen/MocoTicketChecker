@@ -22,3 +22,10 @@ Requirements
 
 5. Build and create zip packages
    `npm run publish`
+
+## Versions
+
+### 1.0.1
+
+- fix "start"-button width
+- dont mark rows in fav table
