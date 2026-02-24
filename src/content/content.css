@@ -15,20 +15,20 @@ tr[data-ticket-check="unknown"] {
   --_row-accent: var(--color-yellow);
 }
 
-.table tbody tr[data-ticket-check] {
+.tst-activities tbody tr[data-ticket-check] {
   --_row-background: color-mix(in srgb, var(--_row-accent) 15%, white 85%);
   margin-bottom: 0.25rem;
   display: table-row;
 }
 
-.table tbody tr[data-ticket-check] > td {
+.tst-activities tbody tr[data-ticket-check] > td {
   position: relative;
   background-color: var(--_row-background);
 }
-.table tbody tr[data-ticket-check]:hover > td {
+.tst-activities tbody tr[data-ticket-check]:hover > td {
   background-color: color-mix(in srgb, var(--_row-background) 99%, black 1%);
 }
-.table tbody tr[data-ticket-check] > td:first-child::before {
+.tst-activities tbody tr[data-ticket-check] > td:first-child::before {
   border-left: 0.5rem solid var(--_row-accent);
   content: "";
   display: inline-block;
@@ -38,12 +38,12 @@ tr[data-ticket-check="unknown"] {
   top: 0;
 }
 
-.table tbody tr[data-ticket-check] > td {
+.tst-activities tbody tr[data-ticket-check] > td {
   border-bottom: 0.125rem solid white;
   border-bottom-color: white !important;
 }
 
-.table tbody tr[data-ticket-check] > td:first-child {
+.tst-activities tbody tr[data-ticket-check] > td:first-child {
   padding-left: 1.25rem;
 }
 
