@@ -29,3 +29,8 @@ Requirements
 
 - fix "start"-button width
 - dont mark rows in fav table
+
+### 1.0.2
+
+- remove not needed host_permissions
+- translate to german

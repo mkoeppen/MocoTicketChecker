@@ -1,30 +1,24 @@
-Privacy Policy for Moco Ticket Checker
+# Datenschutzerklärung für Moco Ticket Checker
 
-​1. General Information
+1. Allgemeine Informationen
+   Diese Datenschutzerklärung informiert Nutzer über Art, Umfang und Zweck der Erhebung und Verwendung von Daten durch die Chrome-Erweiterung „Moco Ticket Checker“.
 
-​This Privacy Policy informs users about the type, scope, and purpose of the collection and use of data by the Chrome extension "Moco Ticket Checker".
+2. Datenerhebung und -verarbeitung
+   Diese Erweiterung erhebt, speichert oder überträgt keine personenbezogenen Daten (PII). Es findet keine Kommunikation mit externen Servern oder Drittanbietern statt.
 
-​2. Data Collection and Processing
+3. Lokale Speicherung (storage.local)
+   Die Erweiterung nutzt die chrome.storage.local API, um Benutzereinstellungen oder Konfigurationen direkt im Browserprofil des Nutzers zu speichern.
 
-​This extension does not collect, store, or transmit any personally identifiable information (PII). There is no communication with external servers or third-party services.
+Zweck: Sicherstellung der Kernfunktionalität der Erweiterung (z. B. Speichern von Benutzereinstellungen).
+Speicherort: Die Daten werden ausschließlich auf Ihrem lokalen Gerät gespeichert.
+Zugriff: Weder der Entwickler noch Dritte haben Zugriff auf diese lokal gespeicherten Daten.
 
-​3. Local Storage (storage.local)
+4. Berechtigungen
+   Die Erweiterung fordert nur die Berechtigung „storage“ an, um das lokale Speichern von Einstellungen zu ermöglichen. Es werden keine Berechtigungen zum Zugriff auf den Browserverlauf, persönliche Dateien oder andere sensible Daten angefordert.
 
-​The extension uses the chrome.storage.local API to store user preferences or configurations directly within the user's browser profile.
+5. Datenaufbewahrung und Löschung
+   Alle lokal gespeicherten Daten werden automatisch gelöscht, wenn Sie die Erweiterung aus Ihrem Chrome-Browser deinstallieren.
 
-**​Purpose:** To ensure the core functionality of the extension (e.g., saving user settings).
-**​Location:** Data is stored exclusively on your local device.
-**​Access:** Neither the developer nor any third parties have access to this locally stored data.
-
-​4. Permissions
-
-​The extension only requests the storage permission to enable the local saving of settings. It does not request permissions to access browsing history, personal files, or any other sensitive data.
-
-​5. Data Retention and Deletion
-
-​All locally stored data is automatically deleted when you uninstall the extension from your Chrome browser.
-
-​6. Contact
-
-​If you have any questions regarding this Privacy Policy, please contact:
-Markus Lohmeier [Mail: marloh+chromemtc(a)posteo.de]
+6. Kontakt
+   Bei Fragen zu dieser Datenschutzerklärung wenden Sie sich bitte an:
+   Markus Lohmeier [Mail: marloh+chromemtc(a)posteo.de]

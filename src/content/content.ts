@@ -79,23 +79,24 @@ class MocoItem {
 
     const p = document.createElement("p");
     p.append(
-      document.createTextNode("Accept Ticket Prefix "),
+      document.createTextNode("Ticket-Präfix "),
       (() => {
         const s = document.createElement("strong");
         s.textContent = `\"${this.prefix}\"`;
         return s;
       })(),
-      document.createTextNode(" for Moco Project "),
+      document.createTextNode(" für Moco-Projekt "),
       (() => {
         const s = document.createElement("strong");
         s.textContent = `\"${this.projectName}\"`;
         return s;
       })(),
+      document.createTextNode(" akzeptieren?"),
     );
 
     const button = document.createElement("button");
     button.className = "mtc-allow-button";
-    button.textContent = "Accept";
+    button.textContent = "Akzeptieren";
 
     wrapper.append(p, button);
 

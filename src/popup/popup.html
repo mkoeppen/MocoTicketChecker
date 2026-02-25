@@ -2,14 +2,15 @@
 <html>
 
 <head>
-  <title>Options</title>
+  <title>Optionen</title>
   <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8">
   <script src="browser-polyfill.js"></script>
 </head>
 
 <body class="mtc-options">
   <form id="options" class="mtc-options__form">
-    <h2 class="mtc-options__heading">Allowed Ticket-Prefixes</h2>
+    <h2 class="mtc-options__heading">Erlaubte Ticket-Präfixe</h2>
     <div class="mtc-options__table-wrapper">
       <table class="mtc-options__prefix-table">
         <colgroup>
@@ -19,19 +20,20 @@
         </colgroup>
         <thead>
           <tr>
-            <th>Project</th>
-            <th>Ticket Prefixes <span class="mtc-options__table-hint">(comma separated)</span></th>
+            <th>Projekt</th>
+            <th>Ticket-Präfixe <span class="mtc-options__table-hint">(kommagetrennt)</span></th>
             <th></th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
-    <button type="button" class="mtc-button mtc-options__prefix-table__add-button">Add new Moco project</button>
+    <button type="button" class="mtc-button mtc-options__prefix-table__add-button">Neues Moco-Projekt
+      hinzufügen</button>
     <div class="mtc-options__footer">
-      <button type="button" class="mtc-button" id="cancel">Cancel</button>
+      <button type="button" class="mtc-button" id="cancel">Abbrechen</button>
       <div id="status"></div>
-      <button type="submit" class="mtc-button" id="save">Save</button>
+      <button type="submit" class="mtc-button" id="save">Speichern</button>
     </div>
   </form>
   <script src="popup.js"></script>
