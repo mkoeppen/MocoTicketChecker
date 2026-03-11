@@ -21,7 +21,7 @@ Requirements
    `npm run build`
 
 5. Build and create zip packages
-   `npm run publish`
+   `npm run prepare-publish`
 
 ## Versions
 
@@ -34,3 +34,7 @@ Requirements
 
 - remove not needed host_permissions
 - translate to german
+
+### 1.0.3
+
+- support dark mode apps like dark reader
